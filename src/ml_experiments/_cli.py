@@ -4,7 +4,7 @@ from typing import Annotated
 import click
 import typer
 
-from python_experiments.utils import setup_logger
+from ml_experiments.utils import setup_logger
 
 app = typer.Typer(
     context_settings={"help_option_names": ["-h", "--help"]},

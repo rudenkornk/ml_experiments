@@ -1,5 +1,5 @@
-from python_experiments.utils import run_shell
+from ml_experiments.utils import run_shell
 
 
 def test_cli() -> None:
-    run_shell(["python", "-m", "python_experiments", "pass"])
+    run_shell(["python", "-m", "ml_experiments", "pass"])

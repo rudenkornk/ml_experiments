@@ -7,7 +7,7 @@ import asyncio
 
 import pytest
 
-from python_experiments.utils import cancel_and_wait
+from ml_experiments.utils import cancel_and_wait
 
 
 async def model_task(marker: list[str], *, suppress: bool) -> None:
