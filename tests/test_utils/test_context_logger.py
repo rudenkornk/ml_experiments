@@ -4,7 +4,7 @@ from contextlib import suppress
 
 import pytest
 
-from python_experiments.utils import ContextLogger
+from ml_experiments.utils import ContextLogger
 
 
 def test_simple_context(*, caplog: pytest.LogCaptureFixture) -> None:

@@ -11,7 +11,7 @@ from typing import Annotated
 
 import typer
 
-from python_experiments.utils import run_shell, setup_logger
+from ml_experiments.utils import run_shell, setup_logger
 
 _logger = logging.getLogger(__name__)
 _repo_path = Path(__file__).parent

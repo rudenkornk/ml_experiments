@@ -4,7 +4,7 @@ from subprocess import CalledProcessError
 
 import pytest
 
-from python_experiments.utils import run_shell, shell_command
+from ml_experiments.utils import run_shell, shell_command
 
 
 def test_shell_shlex() -> None:
