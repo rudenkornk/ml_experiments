@@ -1,8 +1,0 @@
-"""Enable coverage for subprocesses."""
-
-import os
-
-if "COVERAGE_PROCESS_START" in os.environ:
-    import coverage
-
-    coverage.process_startup()
