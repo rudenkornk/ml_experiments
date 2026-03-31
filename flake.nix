@@ -27,11 +27,10 @@
         dep: pythonPkgs.${builtins.head (builtins.split "(==|>=|<=|!=|~=|>|<)" dep)}
       ) project.dependencies;
 
-      testDependencies = with pythonPkgs; [
-        pytest
-        pytest-asyncio
-        pytest-cov
-        pytest-xdist
+      supportDependencies = with pythonPkgs; [
+        typer
+        click
+        rich
       ];
 
       lintDependencies = with pkgs; [
@@ -55,37 +54,10 @@
 
     in
     {
-      packages.${system}.default = pythonPkgs.buildPythonPackage {
-        pyproject = true;
-        pname = project.name;
-        inherit (project) version;
-
-        src = ./.;
-
-        inherit dependencies;
-
-        build-system = [ pythonPkgs.hatchling ];
-
-        meta = {
-          inherit (project) description;
-          mainProgram = project.name;
-          license = pkgs.lib.licenses.mit;
-        };
-
-        pythonImportsCheck = [ project.name ];
-
-        nativeCheckInputs = [ pythonPkgs.pytestCheckHook ] ++ testDependencies;
-
-        # Disable coverage during nix build since the sandbox is read-only
-        pytestFlagsArray = [ "--no-cov" ];
-      };
-
       devShells.${system}.default = pkgs.mkShell {
-        packages = [ python ] ++ dependencies ++ testDependencies ++ lintDependencies;
+        packages = [ python ] ++ dependencies ++ supportDependencies ++ lintDependencies;
         shellHook = ''
-          export PYTHONPATH="$PWD/src:$PWD:$PYTHONPATH"
           export IN_NIX_SHELL=impure
-          export COVERAGE_PROCESS_START="$PWD/pyproject.toml"
           echo "Welcome to the project devshell!"
         '';
       };

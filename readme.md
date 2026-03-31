@@ -26,7 +26,6 @@ This project supports two development workflows: **uv** for Python developers an
 #### Common Commands
 
 ```bash
-uv run pytest
 uv run ./repo.py format         # Format code.
 uv run ./repo.py format --check # Check formatting without changes.
 uv run ./repo.py lint           # Run linters.
@@ -53,13 +52,10 @@ This experimental repository serves as a proving ground for such workflows.
 #### Common Commands
 
 ```bash
-nix develop --ignore-env                  # Enter development shell.
-pytest                                    # Run tests (in dev shell).
-./repo.py format                          # Format code (in dev shell).
-./repo.py format --check                  # Check formatting (in dev shell).
-./repo.py lint                            # Run linters (in dev shell).
-nix build                                 # Build the package.
-nix develop --ignore-env --command pytest # Run without entering shell.
+nix develop --ignore-env # Enter development shell.
+./repo.py format         # Format code (in dev shell).
+./repo.py format --check # Check formatting (in dev shell).
+./repo.py lint           # Run linters (in dev shell).
 ```
 
 All development dependencies --- Python packages, formatters, linters, and system tools—are provided by the Nix shell.
