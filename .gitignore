@@ -7,5 +7,6 @@ wheels/
 *.egg-info
 .coverage
 
-# Virtual environments
 .venv
+.ipynb_checkpoints/
+/result
