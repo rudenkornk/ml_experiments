@@ -28,10 +28,34 @@
       ) project.dependencies;
 
       supportDependencies = with pythonPkgs; [
+        jupyterlab
         typer
         click
         rich
       ];
+
+      neopyter = pythonPkgs.buildPythonPackage rec {
+        pname = "neopyter";
+        version = "0.3.2";
+        pyproject = true;
+
+        src = pythonPkgs.fetchPypi {
+          inherit pname version;
+          hash = "sha256-w5gOSKdRc163UPFmrf/SGtkKRU5C2KOGb6aR6RT0FiM=";
+        };
+
+        build-system = with pythonPkgs; [
+          hatchling
+          hatch-jupyter-builder
+          hatch-nodejs-version
+          jupyterlab
+        ];
+
+        dependencies = with pythonPkgs; [ jupyterlab ];
+
+        pythonImportsCheck = [ "neopyter" ];
+        doCheck = false;
+      };
 
       lintDependencies = with pkgs; [
         # Format & lint tools.
@@ -55,7 +79,10 @@
     in
     {
       devShells.${system}.default = pkgs.mkShell {
-        packages = [ python ] ++ dependencies ++ supportDependencies ++ lintDependencies;
+        packages = [
+          (python.withPackages (ps: dependencies ++ supportDependencies ++ [ neopyter ]))
+        ]
+        ++ lintDependencies;
         shellHook = ''
           export IN_NIX_SHELL=impure
           echo "Welcome to the project devshell!"
