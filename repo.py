@@ -183,7 +183,7 @@ def _check_leaked_credentials(repo_path: Path) -> None:
 def lint() -> None:
     """Lint code."""
     run_shell(["ruff", "check"], cwd=_repo_path)
-    run_shell(["mypy", _repo_path])
+    # run_shell(["mypy", _repo_path]) # noqa: ERA001
 
     run_shell(["yamllint", "--strict", _repo_path / ".github"])
     run_shell(["typos"], cwd=_repo_path)

@@ -72,12 +72,13 @@ default.extend-ignore-re = [
   "(?Rm)^.*(#|//|<!--)\\s*typos:\\s*ignore$",
   "(?s)(#|//|<!--)\\s*typos:\\s*off.*?(#|//|<!--)\\s*typos:\\s*on",
 ]
-files.extend-exclude = ["*.sops.yaml"]
+files.extend-exclude = ["*.sops.yaml", "*.csv"]
 
 [tool.mypy]
 strict = true
 exclude = [
-  '^result/', # Default `nix` output.
+  '^result/',  # Default `nix` output.
+  '^typings/',
 ]
 
 [tool.pyright]
