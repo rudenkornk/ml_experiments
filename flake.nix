@@ -29,7 +29,7 @@
 
       supportDependencies = with pythonPkgs; [
         click
-        jupyterlab
+        pandas-stubs
         rich
         typer
       ];
@@ -56,10 +56,7 @@
     in
     {
       devShells.${system}.default = pkgs.mkShell {
-        packages = [
-          (python.withPackages (ps: dependencies ++ supportDependencies))
-        ]
-        ++ lintDependencies;
+        packages = [ (python.withPackages (ps: dependencies ++ supportDependencies)) ] ++ lintDependencies;
         shellHook = ''
           export IN_NIX_SHELL=impure
           echo "Welcome to the project devshell!"
