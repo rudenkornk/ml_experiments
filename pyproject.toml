@@ -5,6 +5,8 @@ description = "Base python project for experiments."
 readme = "readme.md"
 requires-python = ">=3.13"
 dependencies = [
+  "langchain>=1.2.15",
+  "langchain-openai>=1.1.16",
   "matplotlib>=3.10.8",
   "numpy>=2.4.4",
   "optuna>=4.8.0",
