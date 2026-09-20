@@ -64,6 +64,9 @@ ignore = [
   # "Import alias does not rename original package."
   # This is used to reexport symbols.
   "PLC0414",
+
+  # "Missing copyright notice at top of file."
+  "CPY001",
 ]
 
 [tool.typos]
