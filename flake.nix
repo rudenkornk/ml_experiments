@@ -25,6 +25,7 @@
         pandas-stubs
         scikit-learn
         seaborn
+        statsmodels
         xgboost
 
         click
