@@ -18,6 +18,8 @@
 
       dependencies = with pythonPkgs; [
         catboost
+        folium
+        geopandas
         kagglehub
         matplotlib
         numpy
