@@ -17,14 +17,18 @@
       pythonPkgs = python.pkgs;
 
       dependencies = with pythonPkgs; [
+        folium
         kagglehub
         matplotlib
+        geopandas
         numpy
         optuna
         pandas
         pandas-stubs
+        plotly
         scikit-learn
         seaborn
+        statsmodels
         xgboost
 
         click
