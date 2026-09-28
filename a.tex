@@ -27,5 +27,15 @@ $$
 
 $$
 \theta_{t+1}
-= \theta_t + \eta X^\top \operatorname{clip}(Y - X\theta_t, -c, c).
+= \theta_t + \frac{\eta}{n} X^\top \operatorname{clip}(Y - X\theta_t, -c, c).
+$$
+
+Для стохастического градиентного спуска выберем мини-батч
+$I = \{i_1, \ldots, i_k\}$.
+Тогда шаг имеет вид:
+
+$$
+\theta_{t+1}
+= \theta_t + \frac{\eta}{k} X_I^\top
+\operatorname{clip}(Y_I - X_I\theta_t, -c, c).
 $$
