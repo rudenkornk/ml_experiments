@@ -1,0 +1,31 @@
+Производная $R'(x) = x \cdot I\{\lvert x \rvert \leq c\}
++ c \cdot \operatorname{sgn}(x) \cdot I\{\lvert x \rvert > c\}$.
+
+Это можно переписать как
+
+$$
+R'(x) =
+\begin{cases}
+x, & \text{если } \lvert x \rvert \leq c, \\
+c \cdot \operatorname{sgn}(x), & \text{если } \lvert x \rvert > c.
+\end{cases}
+$$
+
+В первом случае оно совпадает с MSE. Из лекции это равно $x^\top(x\theta - y)$.
+
+Во втором случае оно на границе $c$ совпадает с MSE и далее «обрезается», то есть можно переписать как
+$\min\bigl(c, \max(-c, x)\bigr) = \operatorname{clip}(r, -c, c)$.
+
+Тогда из той же лекции градиент равен
+
+$$
+\nabla_\theta L(\theta)
+= -X^\top \operatorname{clip}(Y - X\theta, -c, c).
+$$
+
+Шаг градиентного спуска:
+
+$$
+\theta_{t+1}
+= \theta_t + \eta X^\top \operatorname{clip}(Y - X\theta_t, -c, c).
+$$
