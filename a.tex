@@ -1,48 +1,7 @@
-Производная $R'(x) = x \cdot I\{\lvert x \rvert \leq c\}
-+ c \cdot \operatorname{sgn}(x) \cdot I\{\lvert x \rvert > c\}$.
-
-Это можно переписать как
-
 $$
-R'(x) =
-\begin{cases}
-x, & \text{если } \lvert x \rvert \leq c, \\
-c \cdot \operatorname{sgn}(x), & \text{если } \lvert x \rvert > c.
-\end{cases}
-$$
-
-Рассмотрим среднюю функцию потерь
-
-$$
-L(\theta) = \frac{1}{n} \sum_{i=1}^n R(Y_i - x_i^\top\theta).
-$$
-
-В первом случае она совпадает с квадратичной функцией потерь. Из лекции градиент в таком случае равен
-$\frac{1}{n}X^\top(X\theta - Y)$.
-
-Во втором случае оно на границе $c$ совпадает с MSE и далее «обрезается», то есть можно переписать как
-$R'(r) = \min\bigl(c, \max(-c, r)\bigr) = \operatorname{clip}(r, -c, c)$.
-
-Тогда, обобщая, градиент равен
-
-$$
-\nabla_\theta L(\theta)
-= -\frac{1}{n} X^\top \operatorname{clip}(Y - X\theta, -c, c).
-$$
-
-Шаг градиентного спуска:
-
-$$
-\theta_{t+1}
-= \theta_t + \frac{\eta}{n} X^\top \operatorname{clip}(Y - X\theta_t, -c, c).
-$$
-
-Для стохастического градиентного спуска выберем мини-батч
-$I = \{i_1, \ldots, i_k\}$.
-Тогда шаг имеет вид:
-
-$$
-\theta_{t+1}
-= \theta_t + \frac{\eta}{k} X_I^\top
-\operatorname{clip}(Y_I - X_I\theta_t, -c, c).
+\mathcal{L}'(\theta)
+= \mathsf{E}\left[
+\exp\left(-\frac{\xi^2\sqrt{\eta}}{1+\theta^2}\right)
+\cdot \frac{2\theta\xi^2\sqrt{\eta}}{(1+\theta^2)^2}
+\right].
 $$
