@@ -41,6 +41,8 @@
         ipython
         ipywidgets
         jupyterlab
+
+        pkgs.bashInteractive # Without this there would be broken console when using direnv.
       ];
 
       lintDependencies = with pkgs; [
@@ -82,6 +84,7 @@
         packages = dependencies ++ devDependencies ++ lintDependencies ++ [ repo ];
         shellHook = ''
           export IN_NIX_SHELL=impure
+          export JUPYTER_PATH="${pythonPkgs.jupyterlab-widgets}/share/jupyter''${JUPYTER_PATH:+:$JUPYTER_PATH}"
           echo "Welcome to the project devshell!"
         '';
       };
