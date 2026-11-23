@@ -28,6 +28,7 @@
         scikit-learn
         seaborn
         statsmodels
+        types-tqdm
         xgboost
 
         click
